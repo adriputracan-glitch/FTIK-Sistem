@@ -321,15 +321,23 @@ function updateDateTime(){
 setInterval(updateDateTime,1000);
 updateDateTime();
 
-// ================= GLOBAL COUNTER =================
+
+// ================= GLOBAL COUNTER FIX =================
 function loadVisitor(){
-  fetch("https://ftik-sistem.vercel.app/")
+
+  // 1. trigger increment (ANTI CORS)
+  const img = new Image();
+  img.src = "https://script.google.com/macros/s/AKfycbymCQ3H_6gF6hc-mPF0efAy8FBNoL1Lu0zYoI3U9EHWGsD5hPOLJm5qi8Hs_egtZO4/exec";
+
+  // 2. ambil jumlah
+  fetch("https://script.google.com/macros/s/AKfycbymCQ3H_6gF6hc-mPF0efAy8FBNoL1Lu0zYoI3U9EHWGsD5hPOLJm5qi8Hs_egtZO4/exec?mode=view")
     .then(res => res.json())
     .then(data => {
       document.getElementById("visitor-count").innerText = data.total;
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log("Counter error:", err));
 }
+
 loadVisitor();
 </script>
 
