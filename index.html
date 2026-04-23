@@ -6,6 +6,7 @@
 <title>PORTAL SISTEM ADMINISTRASI FTIK</title>
 
 <style>
+
 /* ================= GLOBAL ================= */
 body {
   margin: 0;
@@ -28,7 +29,7 @@ body::before {
 
 /* ================= RUNNING TEXT ================= */
 .running-text {
-  background: rgba(255,215,0,0.85);
+  background: rgba(255,215,0,0.9);
   color: #062a55;
   padding: 10px 0;
   font-weight: bold;
@@ -44,6 +45,56 @@ body::before {
 
 @keyframes scroll {
   to { transform: translateX(-100%); }
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-logo {
+  font-weight: bold;
+  font-size: 18px;
+  color: #ffd700;
+}
+
+.nav-menu button {
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 20px;
+  font-size: 15px;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav-menu button.active,
+.nav-menu button:hover {
+  color: #ffd700;
+}
+
+.nav-menu button::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #ffd700;
+  transition: .3s;
+}
+
+.nav-menu button.active::after,
+.nav-menu button:hover::after {
+  width: 100%;
 }
 
 /* ================= HEADER ================= */
@@ -82,6 +133,23 @@ header {
   font-weight: 600;
 }
 
+/* ================= PAGE ================= */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ================= TEXT CARD ================= */
+.text-card {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(0,70,160,0.9), rgba(255,215,0,0.75));
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,.5), 0 0 15px rgba(255,215,0,0.4);
+  line-height: 1.7;
+  color: #ffffff;
+}
+
 /* ================= CONTAINER ================= */
 .container {
   max-width: 1200px;
@@ -92,7 +160,7 @@ header {
   gap: 30px;
 }
 
-/* ================= CARD BASE ================= */
+/* ================= CARD ================= */
 a.card {
   padding: 28px;
   border-radius: 20px;
@@ -104,71 +172,38 @@ a.card {
   backdrop-filter: blur(8px);
   transition: all .35s ease;
   box-shadow: 0 6px 14px rgba(0,0,0,.35);
-  position: relative;
-  overflow: hidden;
-}
-
-/* ================= CARD COLORS ================= */
-.container a.card:nth-child(1){
-  background: linear-gradient(135deg, rgba(0,140,255,.55), rgba(255,255,255,.25));
-}
-.container a.card:nth-child(2){
-  background: linear-gradient(135deg, rgba(255,215,0,.55), rgba(255,255,255,.25));
-}
-.container a.card:nth-child(3){
-  background: linear-gradient(135deg, rgba(0,200,160,.55), rgba(255,255,255,.25));
-}
-.container a.card:nth-child(4){
-  background: linear-gradient(135deg, rgba(255,100,100,.55), rgba(255,255,255,.25));
-}
-.container a.card:nth-child(5){
-  background: linear-gradient(135deg, rgba(160,120,255,.55), rgba(255,255,255,.25));
-}
-.container a.card:nth-child(6){
-  background: linear-gradient(135deg, rgba(180,180,180,.55), rgba(255,255,255,.25));
-}
-.container a.card:nth-child(7){
-  background: linear-gradient(135deg, rgba(120,120,120,.65), rgba(255,255,255,.25));
-}
-.container a.card:nth-child(8){
-  background: linear-gradient(135deg, rgba(0,180,120,.55), rgba(255,255,255,.25));
-}
-.container a.card:nth-child(9){
-  background: linear-gradient(135deg, rgba(0,180,120,.55), rgba(255,255,255,.25));
-}
-.container a.card:nth-child(10){
-  background: linear-gradient(135deg, rgba(255,215,0,.55), rgba(255,255,255,.25));
-}
-  .container a.card:nth-child(11){
-  background: linear-gradient(135deg, rgba(160,120,255,.55), rgba(255,255,255,.25));
-}
-/* ================= HOVER EFFECT ================= */
-a.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,.15);
-  opacity: 0;
-  transition: .35s;
-}
-
-a.card:hover::before {
-  opacity: 1;
 }
 
 a.card:hover {
   transform: translateY(-10px) scale(1.03);
-  box-shadow:
-    0 14px 30px rgba(0,0,0,.55),
-    0 0 25px rgba(255,215,0,.7);
+  box-shadow: 0 14px 30px rgba(0,0,0,.55), 0 0 25px rgba(255,215,0,.7);
+}
+
+/* ================= FLOATING COUNTER ================= */
+#visitor-floating {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg,#0046a0,#ffd700);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.5);
+  z-index: 9999;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ================= FOOTER ================= */
 footer {
   text-align: center;
   padding: 25px;
-  font-size: 15px;
-  opacity: .9;
 }
 
 /* ================= LOADING ================= */
@@ -192,16 +227,10 @@ footer {
   animation: spin 1s linear infinite;
 }
 
-.loading-text {
-  margin-top: 15px;
-  font-size: 18px;
-  color: #ffd700;
-  font-weight: bold;
-}
-
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
 </style>
 </head>
 
@@ -211,21 +240,38 @@ footer {
   <span>SELAMAT DATANG DI PORTAL ADMINISTRASI FTIK — UIN MAHMUD YUNUS BATU SANGKAR</span>
 </div>
 
-<header>
-  <div class="header-wrap">
-    <div class="header-logo-left">
-      <img src="https://i.imgur.com/pR1XcBC.png">
-    </div>
-    <div>
-      <h1>PORTAL SISTEM ADMINISTRASI FTIK</h1>
-      <div id="date-time"></div>
-    </div>
-    <div class="header-logo-right">
-      <img src="https://i.imgur.com/LDj4q9i.png">
-    </div>
+<div class="navbar">
+  <div class="nav-logo">🎓 FTIK</div>
+  <div class="nav-menu">
+    <button onclick="showPage('home',this)" class="active">Beranda</button>
+    <button onclick="showPage('tentang',this)">Tentang</button>
+    <button onclick="showPage('layanan',this)">Layanan</button>
   </div>
+</div>
+
+<header>
+  <h1>PORTAL SISTEM ADMINISTRASI FTIK</h1>
+  <div id="date-time"></div>
 </header>
 
+<!-- BERANDA -->
+<div id="home" class="page active">
+  <div class="text-card">
+    <h2>Beranda</h2>
+    <p>Portal Sistem Administrasi FTIK merupakan platform digital terintegrasi untuk mendukung layanan akademik secara efektif dan efisien.</p>
+  </div>
+</div>
+
+<!-- TENTANG -->
+<div id="tentang" class="page">
+  <div class="text-card">
+    <h2>Tentang Sistem</h2>
+    <p>Portal ini merupakan bagian dari transformasi digital dalam pengelolaan layanan akademik di lingkungan FTIK.</p>
+  </div>
+</div>
+
+<!-- LAYANAN -->
+<div id="layanan" class="page">
 <div class="container">
   <a class="card" onclick="showLoading()" href="https://script.google.com/macros/s/AKfycbzm6iAQtc-Reoyimeo3g7dk7wA06_uTXvEtdNPjaHaDYOdKPtUKrej8EQnoSuSrDJ0/exec">📗 Penunjuk Pembimbing</a>
   <a class="card" onclick="showLoading()" href="https://script.google.com/macros/s/AKfycbwTDwzdxFP4LC8YigPjQ-9jdh4Y9yTyJYJRONB0wgoGWQLF6n0MAjq08izrqHdRMIk/exec">📘 Penunjuk Penguji Seminar Proposal</a>
@@ -239,15 +285,28 @@ footer {
   <a class="card" onclick="showLoading()" href="https://script.google.com/macros/s/AKfycbyiFrd8D42RSUM_nP-dt_2n2aaLeBgJxDL1s_-qHkfWd0POneRrQeik5qzQbb9drA/exec">📙 Surat Aktif Kuliah</a>
   <a class="card" onclick="showLoading()" href="https://script.google.com/macros/s/AKfycby1yG3ULRe_xtk06A8KAdu62p7WIv09mdChohTvXN1ZbIfOj-F_IaPAO-pX07XmcAI/exec">📙 Surat Observasi</a>
 </div>
+</div>
 
 <footer>© 2025 • Created with ❤️ by Adri Putra Can</footer>
 
+<!-- FLOATING -->
+<div id="visitor-floating">
+  👥 <span id="visitor-count">0</span>
+</div>
+
 <div id="loading-overlay">
   <div class="spinner"></div>
-  <div class="loading-text">Memuat aplikasi...</div>
+  <div>Memuat aplikasi...</div>
 </div>
 
 <script>
+function showPage(page,btn){
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById(page).classList.add("active");
+  document.querySelectorAll(".nav-menu button").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+}
+
 function showLoading(){
   document.getElementById("loading-overlay").style.display = "flex";
 }
@@ -261,6 +320,17 @@ function updateDateTime(){
 }
 setInterval(updateDateTime,1000);
 updateDateTime();
+
+// ================= GLOBAL COUNTER =================
+function loadVisitor(){
+  fetch("https://ftik-sistem.vercel.app/")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("visitor-count").innerText = data.total;
+    })
+    .catch(err => console.log(err));
+}
+loadVisitor();
 </script>
 
 </body>
