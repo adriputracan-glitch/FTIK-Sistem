@@ -105,28 +105,6 @@ header {
   text-align: center;
 }
 
-.header-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.header-logo-left,
-.header-logo-right {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.header-logo-left { left: 20px; }
-.header-logo-right { right: 20px; }
-
-.header-logo-left img,
-.header-logo-right img {
-  height: 60px;
-}
-
 #date-time {
   margin-top: 10px;
   color: #ffd700;
@@ -145,9 +123,9 @@ header {
   border-radius: 20px;
   background: linear-gradient(135deg, rgba(0,70,160,0.9), rgba(255,215,0,0.75));
   backdrop-filter: blur(10px);
-  box-shadow: 0 10px 25px rgba(0,0,0,.5), 0 0 15px rgba(255,215,0,0.4);
+  box-shadow: 0 10px 25px rgba(0,0,0,.5);
   line-height: 1.7;
-  color: #ffffff;
+  color: #fff;
 }
 
 /* ================= CONTAINER ================= */
@@ -160,26 +138,40 @@ header {
   gap: 30px;
 }
 
-/* ================= CARD ================= */
+/* ================= CARD (FIX WARNA BIRU-KUNING) ================= */
 a.card {
+  display: block;
   padding: 28px;
   border-radius: 20px;
   text-align: center;
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 600;
   text-decoration: none;
   color: #fff;
+
+  background: linear-gradient(
+    135deg,
+    rgba(0, 70, 160, 0.9),
+    rgba(255, 215, 0, 0.75)
+  );
+
   backdrop-filter: blur(8px);
-  transition: all .35s ease;
   box-shadow: 0 6px 14px rgba(0,0,0,.35);
+  transition: 0.35s ease;
 }
 
 a.card:hover {
   transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 14px 30px rgba(0,0,0,.55), 0 0 25px rgba(255,215,0,.7);
+  box-shadow: 0 14px 30px rgba(0,0,0,.6), 0 0 25px rgba(255,215,0,.8);
 }
 
-/* ================= FLOATING COUNTER ================= */
+/* ================= FOOTER ================= */
+footer {
+  text-align: center;
+  padding: 25px;
+}
+
+/* ================= COUNTER ================= */
 #visitor-floating {
   position: fixed;
   bottom: 20px;
@@ -192,18 +184,6 @@ a.card:hover {
   font-size: 14px;
   box-shadow: 0 5px 15px rgba(0,0,0,.5);
   z-index: 9999;
-  animation: fadeIn 1s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ================= FOOTER ================= */
-footer {
-  text-align: center;
-  padding: 25px;
 }
 
 /* ================= LOADING ================= */
@@ -259,6 +239,8 @@ footer {
   <div class="text-card">
     <h2>Beranda</h2>
     <p>Portal Sistem Administrasi FTIK merupakan platform digital terintegrasi untuk mendukung layanan akademik secara efektif dan efisien.</p>
+    <p>Sistem ini memfasilitasi berbagai proses administrasi seperti penunjukan pembimbing, penguji, pengolahan nilai, dan layanan akademik lainnya dalam satu aplikasi terpadu.</p>
+    <p>Diharapkan sistem ini mampu meningkatkan kualitas layanan, transparansi, serta kemudahan akses bagi seluruh civitas akademika.</p>
   </div>
 </div>
 
@@ -267,6 +249,13 @@ footer {
   <div class="text-card">
     <h2>Tentang Sistem</h2>
     <p>Portal ini merupakan bagian dari transformasi digital dalam pengelolaan layanan akademik di lingkungan FTIK.</p>
+    <ul>
+      <li>Penunjukan Pembimbing dan Penguji</li>
+      <li>Pengelolaan Nilai Akademik</li>
+      <li>Monitoring Mahasiswa</li>
+      <li>Layanan Surat Akademik</li>
+    </ul>
+    <p>Sistem ini dirancang untuk memastikan proses administrasi berjalan lebih cepat, akurat, dan transparan.</p>
   </div>
 </div>
 
