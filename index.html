@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CLICK FTIK</title>
-
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,700&display=swap" rel="stylesheet">
 <style>
 
 /* ================= GLOBAL ================= */
@@ -61,9 +61,17 @@ body::before {
 }
 
 .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-weight: bold;
   font-size: 18px;
   color: #ffd700;
+}
+
+.nav-logo img {
+  width: 32px;
+  height: 32px;
 }
 
 .nav-menu button {
@@ -107,10 +115,14 @@ header {
 }
 
 header h1 {
-  font-size: 38px;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 42px;
   margin: 0;
-  font-weight: bold;
-}
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 1px;
+  color: white;
+}  
 
 header h2 {
   font-size: 22px;
@@ -235,7 +247,10 @@ footer {
 </div>
 
 <div class="navbar">
-  <div class="nav-logo">Fakultas Tarbiyah dan Ilmu Keguruan</div>
+  <div class="nav-logo">
+    <img src="https://i.imgur.com/NmRyrQn.png" alt="Logo FTIK">
+    <span>Uin Mahmud Yunus Batusangkar</span>
+</div>
   <div class="nav-menu">
     <button onclick="showPage('home',this)" class="active">Beranda</button>
     <button onclick="showPage('tentang',this)">Tentang</button>
