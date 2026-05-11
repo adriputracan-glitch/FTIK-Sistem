@@ -98,17 +98,31 @@ body::before {
 }
 
 /* ================= HEADER ================= */
+/* ================= HEADER ================= */
 header {
   background: rgba(255,255,255,0.12);
   backdrop-filter: blur(6px);
-  padding: 20px;
+  padding: 35px 20px;
   text-align: center;
 }
 
+header h1 {
+  font-size: 38px;
+  margin: 0;
+  font-weight: bold;
+}
+
+header h2 {
+  font-size: 22px;
+  margin: 8px 0;
+  font-weight: 500;
+}
+
 #date-time {
-  margin-top: 10px;
+  margin-top: 8px;
   color: #ffd700;
   font-weight: 600;
+  font-size: 14px;
 }
 
 /* ================= PAGE ================= */
@@ -221,7 +235,7 @@ footer {
 </div>
 
 <div class="navbar">
-  <div class="nav-logo">🎓 CLICK FTIK</div>
+  <div class="nav-logo">Fakultas Tarbiyah dan Ilmu Keguruan</div>
   <div class="nav-menu">
     <button onclick="showPage('home',this)" class="active">Beranda</button>
     <button onclick="showPage('tentang',this)">Tentang</button>
@@ -231,7 +245,7 @@ footer {
 
 <header>
   <h1>CLICK FTIK</h1>
-  <h1>SOLUSI TUNTAS DALAM SATU PINTU</h1>
+  <h2>SOLUSI TUNTAS DALAM SATU PINTU</h2>
   <div id="date-time"></div>
 </header>
 
