@@ -325,6 +325,26 @@ header h2::after {
     left: 120%;
   }
 }
+
+@media(max-width:768px){
+  .navbar{
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .nav-menu button{
+    margin: 5px;
+  }
+
+  header h1{
+    font-size: 30px;
+  }
+
+  header h2{
+    font-size: 18px;
+  }
+}
 </style>
 </head>
 
@@ -377,8 +397,23 @@ header h2::after {
   </div>
 </div>
 
-<!-- LAYANAN -->
+  <!-- PILIHAN LAYANAN -->
 <div id="layanan" class="page">
+  <div class="container">
+
+    <a class="card" href="#" onclick="showPageDirect('mahasiswa'); return false;">
+      🎓 Layanan Mahasiswa
+    </a>
+
+    <a class="card" href="#" onclick="showPageDirect('dosen'); return false;">
+      👨‍🏫 Layanan Dosen
+    </a>
+
+  </div>
+</div>
+
+<!-- LAYANAN DOSEN -->
+<div id="dosen" class="page">
 <div class="container">
   <a class="card" onclick="showLoading()" href="https://script.google.com/macros/s/AKfycbxRkMYeHV7qNAns4qDFTva66qHcYId1rp9f1I2eO2uZWxz9eIgAO-_Ltuza5n5jALeC/exec">📗 Penunjuk Pembimbing</a>
   <a class="card" onclick="showLoading()" href="https://script.google.com/macros/s/AKfycbxs6jaH81BAoGer2Y62Ve82UtnKeH-j0qWaV4YMO8sTSFxMoJ1DdyBvrzuGxqXNMQab/exec">📘 Penunjuk Penguji Seminar Proposal</a>
@@ -391,9 +426,83 @@ header h2::after {
    <a class="card" onclick="showLoading()" href="https://script.google.com/macros/s/AKfycbwMNNUPAKdidEL01q_-IJsHcw4PP1PSf1NH_8_F0HErfF2985qkQCrehuJx4PRCATp5/exec">📙 Sistem Monitoring Mahasiswa Aktif</a>
   <a class="card" onclick="showLoading()" href="https://script.google.com/macros/s/AKfycbyiFrd8D42RSUM_nP-dt_2n2aaLeBgJxDL1s_-qHkfWd0POneRrQeik5qzQbb9drA/exec">📙 Surat Aktif Kuliah</a>
   <a class="card" onclick="showLoading()" href="https://script.google.com/macros/s/AKfycby1yG3ULRe_xtk06A8KAdu62p7WIv09mdChohTvXN1ZbIfOj-F_IaPAO-pX07XmcAI/exec">📙 Surat Observasi</a>
+
+  <a class="card" href="#" onclick="showPageDirect('layanan'); return false;">
+  ⬅ Kembali ke Menu Layanan
+</a>
 </div>
 </div>
 
+<!-- HALAMAN MAHASISWA -->
+<div id="mahasiswa" class="page">
+  <div class="container">
+
+<a class="card" href="#" onclick="showPageDirect('aktifkuliah'); return false;">
+  📄 Surat Aktif Kuliah
+</a>
+
+    <a class="card" onclick="showLoading()" href="https://docs.google.com/forms/d/e/1FAIpQLScVoyjJUsk2I5f2UsrkLQwBGJs4vsxoUOqJ1Ci1kDIy8JU0pg/viewform">
+      📝 Pengajuan Surat Observasi Awal
+    </a>
+
+       <a class="card" onclick="showLoading()" href="https://sites.google.com/uinmybatusangkar.ac.id/uinmyakamaftik/layanan-administrasi/observasi-mata-kuliah">
+      📝 Pengajuan Surat Observasi Mata Kuliah
+    </a>
+
+    <a class="card" onclick="showLoading()" href="https://script.google.com/a/macros/uinmybatusangkar.ac.id/s/AKfycbyV4r4T6BfspDQUet7q5ss0EdB5oD-sZoReKoV2FZz3u08EUyhaBK_zclMjne_DTX5_/exec">
+      📚 Cek Judul Skripsi
+    </a>
+
+        <a class="card" onclick="showLoading()" href="https://docs.google.com/forms/d/e/1FAIpQLSe9jAZMllgwVSm2lgQ2YdlhZI97xLGqsl21rOnzCp3RntX5AQ/viewform">
+      📚 Penerbitan Surat Tugas Pembimbing
+    </a>
+
+            <a class="card" onclick="showLoading()" href="https://docs.google.com/forms/d/e/1FAIpQLSeBdcdBBniW5TRZpuM35rwQFFVigzw75_KB4JRHDjvthffGuA/viewform">
+      📚 Pendaftaran Seminar Proposal
+    </a>
+
+                <a class="card" onclick="showLoading()" href="https://docs.google.com/forms/d/e/1FAIpQLSc6LlgSbLCU-nE_MXwFY67_nXwWLonZ3ubN5RupnCCrPoKPRA/viewform">
+      🎓 Pendaftaran Agenda Munaqasah
+    </a>
+
+                <a class="card" onclick="showLoading()" href="https://docs.google.com/forms/d/e/1FAIpQLSfY-t-Dv6C1Wp5yBXGquqRhucKOVSqlTHAFYCI38P9f3303OQ/viewform">
+      🏆 Pendaftaran Kompre
+    </a>
+
+                <a class="card" onclick="showLoading()" href="https://docs.google.com/forms/d/e/1FAIpQLSdoXTEy5dr2uEueGIeS2EEPejvT1-Eb2Yqrop6CnTtO17CWUw/viewform">
+      ✅ Pendaftaran SKEK
+    </a>
+
+                <a class="card" onclick="showLoading()" href="https://docs.google.com/forms/d/e/1FAIpQLSf5XAuzuOv1xHxHmUChpTWnCyQuo3bRyWdAP_kj-x_OEN9wlA/viewform">
+      🔍 Pendaftaran Turnitin
+    </a>
+
+  </div>
+</div>
+
+  <!-- HALAMAN SURAT AKTIF KULIAH -->
+<div id="aktifkuliah" class="page">
+  <div class="container">
+
+    <a class="card" onclick="showLoading()" href="https://docs.google.com/forms/d/e/1FAIpQLSf1qE93g0yCDfmAfPRk7jqUVh-yiI02cpJ4oTL9UywqAe00CA/viewform">
+      🎓 Surat Aktif Kuliah Beasiswa
+    </a>
+
+    <a class="card" onclick="showLoading()" href="https://docs.google.com/forms/d/e/1FAIpQLSfhvxI_Jiz9Oi40GfyZiKKQ4TJwprmGt_nnmuHFC17hSxQCow/viewform">
+      🏥 Surat Aktif Kuliah BPJS
+    </a>
+
+    <a class="card" onclick="showLoading()" href="https://docs.google.com/forms/d/e/1FAIpQLSdfMI95n4FLLfgWkQ9VtJ5U-7rNk41E47TvlssEq3BCD3be_A/viewform">
+      💼 Surat Aktif Kuliah Tunjangan Gaji
+    </a>
+
+    <a class="card" href="#" onclick="showPageDirect('mahasiswa'); return false;">
+  ⬅ Kembali
+</a>
+
+  </div>
+</div>
+  
 <footer>© 2025 • Created with ❤️ by Adri Putra Can</footer>
 
 <!-- COUNTER -->
@@ -440,6 +549,22 @@ function loadVisitor(){
 }
 
 loadVisitor();
+
+  function showPageDirect(page){
+  document.querySelectorAll(".page").forEach(p=>{
+    p.classList.remove("active");
+  });
+
+  document.getElementById(page).classList.add("active");
+}
+
+function showLoading(){
+  document.getElementById("loading-overlay").style.display = "flex";
+
+  setTimeout(() => {
+    document.getElementById("loading-overlay").style.display = "none";
+  }, 5000);
+}
 </script>
 
 </body>
