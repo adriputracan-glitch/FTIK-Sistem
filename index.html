@@ -243,6 +243,59 @@ footer {
   to { transform: rotate(360deg); }
 }
 
+  /* Animasi cahaya berjalan untuk judul utama */
+.hero h1 {
+  font-size: 55px;
+  font-weight: bold;
+  font-style: italic;
+  text-transform: uppercase;
+  
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #ffffff 35%,
+    #ffd700 50%,
+    #ffffff 65%,
+    #ffffff 100%
+  );
+  
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shineText 3s linear infinite;
+}
+
+/* Animasi untuk subjudul */
+.hero p {
+  font-size: 24px;
+  font-weight: 600;
+
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #ffffff 40%,
+    #00e5ff 50%,
+    #ffffff 60%,
+    #ffffff 100%
+  );
+
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shineText 4s linear infinite;
+}
+
+/* Keyframes cahaya bergerak */
+@keyframes shineText {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
 </style>
 </head>
 
