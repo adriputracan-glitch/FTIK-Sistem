@@ -402,9 +402,9 @@ header h2::after {
 <div id="layanan" class="page">
   <div class="container">
 
-    <a class="card" href="#" onclick="showPageDirect('mahasiswa'); return false;">
-      🎓 Layanan Mahasiswa
-    </a>
+<a class="card" href="#" onclick="bukaSurvey(); return false;">
+  🎓 Layanan Mahasiswa
+</a>
 
 <a class="card" href="#" onclick="loginDosen(); return false;">
   👨‍🏫 Layanan Dosen
@@ -633,7 +633,37 @@ function logoutDosen(){
   alert("Logout berhasil");
   showPageDirect("layanan");
 }
+
+function bukaSurvey(){
+
+  const status = localStorage.getItem("surveyMahasiswa");
+
+  if(status === "done"){
+    showPageDirect("mahasiswa");
+  } else {
+    showPageDirect("verifikasiSurvey");
+  }
+}
+
+function selesaiSurvey(){
+  localStorage.setItem("surveyMahasiswa","done");
+  showPageDirect("mahasiswa");
+}
 </script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <div id="verifikasiSurvey" class="page">
+  <div class="container">
+
+    <a class="card" onclick="window.open('https://docs.google.com/forms/d/1lHvRr3gXaAYLdLiKRWzkQYZLtqvW-KW0sv-Nhw4gNws/preview')">
+      📝 Silahkan Isi Buku Tamu 
+    </a>
+
+    <a class="card" href="#" onclick="selesaiSurvey(); return false;">
+      ✅ Saya Sudah Buku Tamu
+    </a>
+
+  </div>
+</div>
 </body>
 </html>
