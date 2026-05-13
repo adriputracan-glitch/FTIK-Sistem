@@ -635,18 +635,10 @@ function logoutDosen(){
 }
 
 function bukaSurvey(){
-
-  const status = localStorage.getItem("surveyMahasiswa");
-
-  if(status === "done"){
-    showPageDirect("mahasiswa");
-  } else {
-    showPageDirect("verifikasiSurvey");
-  }
+  showPageDirect("verifikasiSurvey");
 }
 
 function selesaiSurvey(){
-  localStorage.setItem("surveyMahasiswa","done");
   showPageDirect("mahasiswa");
 }
 </script>
