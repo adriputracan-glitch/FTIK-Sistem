@@ -579,15 +579,13 @@ function loginDosen() {
 
   const savedEmail = localStorage.getItem("dosenEmail");
 
-  // jika sudah login sebelumnya
   if(savedEmail && savedEmail.endsWith("@uinmybatusangkar.ac.id")){
     showPageDirect("dosen");
     return;
   }
 
-  // cek apakah library google sudah siap
-  if(typeof google === "undefined" || !google.accounts){
-    alert("Login Google sedang dimuat, silakan tunggu beberapa detik lalu coba lagi.");
+  if(typeof google === "undefined"){
+    alert("Google login belum siap, refresh halaman.");
     return;
   }
 
@@ -596,22 +594,17 @@ function loginDosen() {
     callback: handleCredentialResponse
   });
 
-  google.accounts.id.prompt((notification) => {
-    
-    if(notification.isNotDisplayed()){
-      console.log("Popup tidak tampil");
-      alert("Popup login tidak muncul. Refresh halaman lalu coba lagi.");
+  // buat popup login manual
+  google.accounts.id.renderButton(
+    document.getElementById("googleLoginContainer"),
+    {
+      theme: "outline",
+      size: "large"
     }
+  );
 
-    if(notification.isSkippedMoment()){
-      console.log("Login dilewati user");
-    }
-
-    if(notification.isDismissedMoment()){
-      console.log("Popup ditutup user");
-    }
-
-  });
+  // tampilkan popup halaman login
+  showPageDirect("googleLoginPage");
 }
 
 function handleCredentialResponse(response) {
@@ -681,5 +674,25 @@ function selesaiSurvey(){
 
   </div>
 </div>
+
+  <div id="googleLoginPage" class="page">
+  <div class="container">
+
+    <div class="text-card">
+      <h2>Login </h2>
+      <p>Silakan login menggunakan email @uinmybatusangkar.ac.id.</p>
+
+      <div id="googleLoginContainer"></div>
+
+      <br><br>
+
+      <a class="card" href="#" onclick="showPageDirect('layanan'); return false;">
+        ⬅ Kembali
+      </a>
+    </div>
+
+  </div>
+</div>
+  
 </body>
 </html>
