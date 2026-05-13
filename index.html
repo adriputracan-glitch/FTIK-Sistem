@@ -573,18 +573,21 @@ function showLoading(){
 
   let dosenEmail = "";
 
+let dosenEmail = "";
+
 function loginDosen() {
 
   const savedEmail = localStorage.getItem("dosenEmail");
 
+  // jika sudah login sebelumnya
   if(savedEmail && savedEmail.endsWith("@uinmybatusangkar.ac.id")){
     showPageDirect("dosen");
     return;
   }
 
-  // cek apakah library google sudah loaded
-  if(typeof google === "undefined"){
-    alert("Login Google sedang dimuat, silakan coba beberapa detik lagi.");
+  // cek apakah library google sudah siap
+  if(typeof google === "undefined" || !google.accounts){
+    alert("Login Google sedang dimuat, silakan tunggu beberapa detik lalu coba lagi.");
     return;
   }
 
@@ -593,20 +596,22 @@ function loginDosen() {
     callback: handleCredentialResponse
   });
 
-  // tampilkan popup login
   google.accounts.id.prompt((notification) => {
-    if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-      alert("Popup login gagal muncul. Silakan refresh halaman lalu coba lagi.");
+    
+    if(notification.isNotDisplayed()){
+      console.log("Popup tidak tampil");
+      alert("Popup login tidak muncul. Refresh halaman lalu coba lagi.");
     }
-  });
-}
 
-  google.accounts.id.initialize({
-    client_id: "8887960209-jvl38c742emhoq995h89uldqobl6ccdo.apps.googleusercontent.com",
-    callback: handleCredentialResponse
-  });
+    if(notification.isSkippedMoment()){
+      console.log("Login dilewati user");
+    }
 
-  google.accounts.id.prompt();
+    if(notification.isDismissedMoment()){
+      console.log("Popup ditutup user");
+    }
+
+  });
 }
 
 function handleCredentialResponse(response) {
