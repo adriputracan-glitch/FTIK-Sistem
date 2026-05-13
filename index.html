@@ -405,9 +405,9 @@ header h2::after {
       🎓 Layanan Mahasiswa
     </a>
 
-    <a class="card" href="#" onclick="showPageDirect('dosen'); return false;">
-      👨‍🏫 Layanan Dosen
-    </a>
+<a class="card" href="#" onclick="loginDosen(); return false;">
+  👨‍🏫 Layanan Dosen
+</a>
 
   </div>
 </div>
@@ -428,6 +428,12 @@ header h2::after {
   <a class="card" onclick="showLoading()" href="https://script.google.com/macros/s/AKfycby1yG3ULRe_xtk06A8KAdu62p7WIv09mdChohTvXN1ZbIfOj-F_IaPAO-pX07XmcAI/exec">📙 Surat Observasi</a>
 
   <a class="card" href="#" onclick="showPageDirect('layanan'); return false;">
+
+<a class="card" href="#" onclick="logoutDosen(); return false;">
+  🚪 Logout Dosen
+</a>
+
+<a class="card" href="#" onclick="showPageDirect('layanan'); return false;">
   ⬅ Kembali ke Menu Layanan
 </a>
 </div>
@@ -565,7 +571,70 @@ function showLoading(){
     document.getElementById("loading-overlay").style.display = "none";
   }, 5000);
 }
-</script>
 
+  let dosenEmail = "";
+
+function loginDosen() {
+
+  const savedEmail = localStorage.getItem("dosenEmail");
+
+  if(savedEmail && savedEmail.endsWith("@uinmybatusangkar.ac.id")){
+    showPageDirect("dosen");
+    return;
+  }
+
+  google.accounts.id.initialize({
+    client_id: "8887960209-jvl38c742emhoq995h89uldqobl6ccdo.apps.googleusercontent.com",
+    callback: handleCredentialResponse
+  });
+
+  google.accounts.id.prompt();
+}
+
+function handleCredentialResponse(response) {
+
+  const data = parseJwt(response.credential);
+  const email = data.email;
+
+  console.log("Email login:", email);
+
+  if(email.endsWith("@uinmybatusangkar.ac.id")){
+
+    localStorage.setItem("dosenEmail", email);
+
+    alert("Selamat datang, " + email);
+
+    showPageDirect("dosen");
+
+  } else {
+
+    alert("Akses ditolak! Hanya dosen dengan email @uinmybatusangkar.ac.id yang bisa masuk.");
+
+  }
+}
+
+function parseJwt(token) {
+  let base64Url = token.split('.')[1];
+  let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+
+  let jsonPayload = decodeURIComponent(
+    atob(base64)
+    .split('')
+    .map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    })
+    .join('')
+  );
+
+  return JSON.parse(jsonPayload);
+}
+
+function logoutDosen(){
+  localStorage.removeItem("dosenEmail");
+  alert("Logout berhasil");
+  showPageDirect("layanan");
+}
+</script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 </body>
 </html>
