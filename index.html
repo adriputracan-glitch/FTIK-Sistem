@@ -788,8 +788,12 @@ fetch("https://script.google.com/macros/s/AKfycbyF4xKC3Q60KSDr__GYB4cl8ah2Ctpieh
           <p>${item.deskripsi}</p>
 
           <div class="info-date">
-            📅 ${item.tanggal}
-          </div>
+  📅 ${new Date(item.tanggal).toLocaleDateString('id-ID', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  })}
+</div>
 
         </div>
 
