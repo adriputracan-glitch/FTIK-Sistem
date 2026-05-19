@@ -526,6 +526,116 @@ header h2::after {
   }
 
 }
+
+  /* ================= HERO CLEAN ================= */
+
+.hero-center{
+  text-align:center;
+  padding:80px 20px 140px;
+  animation:fadeUp 1s ease;
+}
+
+.hero-logo{
+  width:110px;
+  margin-bottom:15px;
+}
+
+.hero-center h1{
+  font-size:85px;
+  margin:0;
+  font-weight:900;
+  color:#000;
+  line-height:1;
+  text-transform:uppercase;
+
+  text-shadow:
+    0 3px 10px rgba(255,255,255,0.35);
+}
+
+.hero-text{
+  margin:10px 0;
+  font-size:28px;
+  font-weight:700;
+  color:#000;
+  text-transform:uppercase;
+
+  text-shadow:
+    0 2px 8px rgba(255,255,255,0.25);
+}
+
+.hero-fakultas{
+  margin-top:90px;
+  font-size:40px;
+  font-weight:900;
+  color:#000;
+  text-transform:uppercase;
+
+  text-shadow:
+    0 2px 8px rgba(255,255,255,0.25);
+}
+
+.hero-univ{
+  font-size:34px;
+  font-weight:800;
+  color:#000;
+  text-transform:uppercase;
+
+  text-shadow:
+    0 2px 8px rgba(255,255,255,0.25);
+}
+
+/* efek gelap khusus area beranda */
+#beranda{
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(2px);
+}
+
+/* animasi */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .hero-center{
+    padding:50px 15px 100px;
+  }
+
+  .hero-logo{
+    width:80px;
+  }
+
+  .hero-center h1{
+    font-size:52px;
+  }
+
+  .hero-text{
+    font-size:16px;
+  }
+
+  .hero-fakultas{
+    font-size:22px;
+    margin-top:60px;
+  }
+
+  .hero-univ{
+    font-size:18px;
+  }
+
+}
+
+  /* HEADER HANYA HILANG DI BERANDA */
+.hide-header header{
+  display:none;
+}
 </style>
 
   <script type="application/ld+json">
@@ -570,27 +680,27 @@ header h2::after {
 
   <div class="hero-center">
 
-  <img src="https://i.imgur.com/NmRyrQn.png" class="hero-logo">
+    <img src="https://i.imgur.com/NmRyrQn.png" class="hero-logo">
 
-  <h1>CLICK FTIK</h1>
+    <h1>CLICK FTIK</h1>
 
-  <p class="hero-text">
-    CENTRAL LAYANAN INFORMASI CEPAT KAMPUS
-  </p>
+    <p class="hero-text">
+      CENTRAL LAYANAN INFORMASI CEPAT KAMPUS
+    </p>
 
-  <p class="hero-text">
-    SOLUSI TUNTAS DALAM SATU PINTU
-  </p>
+    <p class="hero-text">
+      SOLUSI TUNTAS DALAM SATU PINTU
+    </p>
 
-  <p class="hero-fakultas">
-    FAKULTAS TARBIYAH DAN ILMU KEGURUAN
-  </p>
+    <p class="hero-fakultas">
+      FAKULTAS TARBIYAH DAN ILMU KEGURUAN
+    </p>
 
-  <p class="hero-univ">
-    UNIVERSITAS ISLAM NEGERI MAHMUD YUNUS BATUSANGKAR
-  </p>
+    <p class="hero-univ">
+      UNIVERSITAS ISLAM NEGERI MAHMUD YUNUS BATUSANGKAR
+    </p>
 
-</div>
+  </div>
 
 </div>
 
@@ -758,11 +868,26 @@ header h2::after {
 
 <script>
 function showPage(page,btn){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+
+  document.querySelectorAll(".page").forEach(p=>{
+    p.classList.remove("active");
+  });
+
   document.getElementById(page).classList.add("active");
 
-  document.querySelectorAll(".nav-menu button").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll(".nav-menu button").forEach(b=>{
+    b.classList.remove("active");
+  });
+
   btn.classList.add("active");
+
+  /* HEADER HANYA DI BERANDA */
+  if(page === "beranda"){
+    document.body.classList.add("hide-header");
+  } else {
+    document.body.classList.remove("hide-header");
+  }
+
 }
 
 function updateDateTime(){
@@ -949,6 +1074,8 @@ fetch("https://script.google.com/macros/s/AKfycbyF4xKC3Q60KSDr__GYB4cl8ah2Ctpieh
 
 loadInformasi();
   
+  /* otomatis hide header saat pertama kali buka */
+document.body.classList.add("hide-header");
 </script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 
