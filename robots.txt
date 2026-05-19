@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ftik-sistem.vercel.app/sitemap.xml
