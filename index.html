@@ -19,7 +19,7 @@
 <meta property="og:title" content="CLICK FTIK">
 <meta property="og:description" content="Solusi Tuntas Dalam Satu Pintu">
 <meta property="og:image" content="https://i.imgur.com/NmRyrQn.png">
-<meta property="og:url" content="https://ftik-sistem.vercel.app/">
+<meta property="og:url" content="https://ftik-sistem..app/">
 <meta property="og:type" content="website">
   
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,700&display=swap" rel="stylesheet">
@@ -643,7 +643,7 @@ header h2::after {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "CLICK FTIK",
-  "url": "https://ftik-sistem.vercel.app/",
+  "url": "https://ftik-sistem..app/",
   "description": "Platform layanan akademik FTIK UIN Mahmud Yunus Batusangkar"
 }
 </script>
@@ -948,29 +948,38 @@ function loginDosen() {
     return;
   }
 
-  if(typeof google === "undefined"){
-    alert("Google login belum siap, refresh halaman.");
-    return;
-  }
-
-  google.accounts.id.initialize({
-    client_id: "8887960209-jvl38c742emhoq995h89uldqobl6ccdo.apps.googleusercontent.com",
-    callback: handleCredentialResponse
-  });
-
-  // buat popup login manual
-  google.accounts.id.renderButton(
-    document.getElementById("googleLoginContainer"),
-    {
-      theme: "outline",
-      size: "large"
-    }
-  );
-
-  // tampilkan popup halaman login
+  // tampilkan halaman login dulu
   showPageDirect("googleLoginPage");
-}
 
+  // tunggu google script siap
+  setTimeout(() => {
+
+    if(typeof google === "undefined"){
+      alert("Google Login gagal dimuat.");
+      return;
+    }
+
+    google.accounts.id.initialize({
+      client_id: "8887960209-jvl38c742emhoq995h89uldqobl6ccdo.apps.googleusercontent.com",
+      callback: handleCredentialResponse
+    });
+
+    // reset container biar tombol tidak double
+    document.getElementById("googleLoginContainer").innerHTML = "";
+
+    // render tombol login
+    google.accounts.id.renderButton(
+      document.getElementById("googleLoginContainer"),
+      {
+        theme: "outline",
+        size: "large",
+        width: 300
+      }
+    );
+
+  }, 500);
+
+}
 function handleCredentialResponse(response) {
 
   const data = parseJwt(response.credential);
